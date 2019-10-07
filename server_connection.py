@@ -6,11 +6,17 @@ import random, json
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/list')
 def output():
 	# serve index template
 	return render_template('index.html')
 
+
+@app.route('/handle_data', methods=['POST'])
+def handle_data():
+    projectpath = request.form['form']
+
+						 
 @app.route('/receiver', methods = ['POST'])
 def worker():
 	# read json + reply
