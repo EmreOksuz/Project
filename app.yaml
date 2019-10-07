@@ -4,8 +4,10 @@ runtime: python
 api_version: 1
 
 handlers:
-- url:
+- url: /
  static_files: www/index.html
   upload: www/index.html
-- url: .*
+- url: /(.*)
+  static_files: www/\1
   script: main.py
+	upload: www/(.*)
