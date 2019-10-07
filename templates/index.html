@@ -8,8 +8,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Laila" rel="stylesheet">
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Laila" rel="stylesheet">
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-		<link rel="stylesheet" href="Style/style.css">
+		<link rel="stylesheet" href="../static/style.css">
 
 </head>
 <body>
@@ -17,7 +19,7 @@
 	
 <div class="container">
 	
-	<form class="form shadow" action="">
+	<form id="form "class="form shadow" action="">
 <input id="firstime" class="datetime shadow "  type="datetime-local" ><br><br>
 <input id="lasttime" class="datetime shadow "  type="datetime-local" ><br><br>
 		<button type="button" id="myBtn" onclick="myFunction()" class="btn btn-success rounded shadow button" value="Göster" >Göster</button>

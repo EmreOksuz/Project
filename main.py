@@ -13,13 +13,13 @@
 # limitations under the License.
 
 # [START gae_python37_app]
-from flask import Flask
+from flask import Flask ,render_template,request
 import socket
 import sys
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 
 @app.route('/')
@@ -27,7 +27,30 @@ def hello():
     """Return a friendly HTTP greeting."""
     return 'Emre Öksüz'
 
+@app.route('/list')
+def index():
 
+	return render_template('index.html')
+
+
+@app.route('/handle_data', methods=['POST'])
+def handle_data():
+    projectpath = request.form['form']
+
+						 
+@app.route('/receiver', methods = ['POST'])
+def worker():
+	# read json + reply
+	data = request.get_json()
+	result = ''
+
+	for item in data:
+		# loop over every row
+		result += str(item['make']) + '\n'
+
+	return result
+	
+	
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
     # Engine, a webserver process such as Gunicorn will serve the app. This
